@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft Pro - Professional Website Development Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Demo Generator Section */
+        .demo-generator {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .demo-input-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .demo-input:focus {
+            border-color: #667eea;
+        }
+
+        .generate-btn {
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .generate-btn:hover {
+            background: #5a67d8;
+        }
+
+        /* Demo Results */
+        .demo-results {
+            display: none;
+            margin-top: 40px;
+        }
+
+        .demo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .demo-preview {
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-content {
+            padding: 25px;
+        }
+
+        .demo-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .demo-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .demo-features li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        .demo-features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .demo-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .view-demo-btn {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .select-plan-btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        /* Demo Display Modal */
+        .demo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+        }
+
+        .demo-modal-content {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            margin: 5% auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .demo-modal-header {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-demo {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .demo-iframe-container {
+            width: 100%;
+            height: calc(100% - 60px);
+            overflow: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .demo-website {
+            width: 100%;
+            min-height: 100%;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Service Plans Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* LMS Section */
+        .lms-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .lms-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .lms-text {
+            padding: 20px;
+        }
+
+        .lms-features {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li:before {
+            content: "• ";
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .demo-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .lms-content {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-modal-content {
+                width: 95%;
+                height: 95%;
+                margin: 2.5% auto;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Demo Preview Styles */
+        .preview-website {
+            transform: scale(0.3);
+            transform-origin: top left;
+            width: 333.33%;
+            height: 333.33%;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i> WebCraft Pro
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#demo">Demo Generator</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#lms">LMS</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Professional Website Development Services</h1>
+            <p>Transform your vision into a stunning digital reality with our expert web development services</p>
+            <a href="#demo" class="cta-button">Try Demo Generator</a>
+        </div>
+    </section>
+
+    <!-- Demo Generator Section -->
+    <section class="demo-generator" id="demo">
+        <div class="container">
+            <h2 class="section-title">Interactive Demo Generator</h2>
+            <div class="demo-input-section">
+                <h3>Enter Your Website Type</h3>
+                <p>Tell us what kind of website you need, and we'll generate live demo versions in all three formats</p>
+                <div class="input-group">
+                    <input type="text" class="demo-input" id="websiteType" placeholder="e.g., Construction Website, Restaurant, E-commerce Store, Law Firm">
+                    <button class="generate-btn" onclick="generateDemos()">Generate Live Demos</button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating your custom live demos...</p>
+            </div>
+
+            <div class="demo-results" id="demoResults">
+                <h3>Your Custom Website Demos</h3>
+                <div class="demo-cards" id="demoCards">
+                    <!-- Demo cards will be generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Modal -->
+    <div class="demo-modal" id="demoModal">
+        <div class="demo-modal-content">
+            <div class="demo-modal-header">
+                <h3 id="demoModalTitle">Website Demo</h3>
+                <button class="close-demo" onclick="closeDemoModal()">&times;</button>
+            </div>
+            <div class="demo-iframe-container">
+                <div class="demo-website" id="demoWebsiteContainer">
+                    <!-- Generated website will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Development Plans</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="service-title">Static Website</h3>
+                    <p class="service-description">Perfect for simple business websites, portfolios, and landing pages. Fast loading and cost-effective.</p>
+                    <div class="service-price">Starting at $299</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Dynamic Website</h3>
+                    <p class="service-description">Interactive websites with content management, user interactions, and database integration.</p>
+                    <div class="service-price">Starting at $799</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="service-title">Full-Fledged Website</h3>
+                    <p class="service-description">Complete web applications with advanced features, e-commerce, and custom functionality.</p>
+                    <div class="service-price">Starting at $1,499</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LMS Section -->
+    <section class="lms-section" id="lms">
+        <div class="container">
+            <h2 class="section-title">Personalized LMS Projects</h2>
+            <div class="lms-content">
+                <div class="lms-text">
+                    <h3>Custom Learning Management Systems</h3>
+                    <p>Build powerful educational platforms tailored to your specific needs. Our LMS solutions provide comprehensive learning experiences for educational institutions, corporate training, and online course providers.</p>
+                    <a href="#contact" class="cta-button">Get LMS Quote</a>
+                </div>
+                <div class="lms-features">
+                    <h4>LMS Features</h4>
+                    <ul>
+                        <li>User Management & Roles</li>
+                        <li>Course Creation & Management</li>
+                        <li>Progress Tracking & Analytics</li>
+                        <li>Interactive Assessments</li>
+                        <li>Certificate Generation</li>
+                        <li>Payment Integration</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Multi-language Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WebCraft Pro</h3>
+                    <p>Your trusted partner for professional website development and digital solutions.</p>
+                    <p><i class="fas fa-envelope"></i> info@webcraftpro.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Static Websites</li>
+                        <li>Dynamic Websites</li>
+                        <li>Full-Fledged Applications</li>
+                        <li>LMS Development</li>
+                        <li>E-commerce Solutions</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript & React</li>
+                        <li>Node.js & PHP</li>
+                        <li>MySQL & MongoDB</li>
+                        <li>WordPress & CMS</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li>24/7 Customer Support</li>
+                        <li>Free Maintenance</li>
+                        <li>Documentation</li>
+                        <li>Training Sessions</li>
+                        <li>Technical Consultation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WebCraft Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Demo Generator JavaScript
+        let currentWebsiteType = '';
+
+        function generateDemos() {
+            const websiteType = document.getElementById('websiteType').value.trim();
+            
+            if (!websiteType) {
+                alert('Please enter a website type');
+                return;
+            }
+
+            currentWebsiteType = websiteType;
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('demoResults').style.display = 'none';
+
+            // Simulate loading time
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('demoResults').style.display = 'block';
+                
+                // Generate demo cards
+                generateDemoCards(websiteType);
+                
+                // Scroll to results
+                document.getElementById('demoResults').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        function generateDemoCards(websiteType) {
+            const demoCards = document.getElementById('demoCards');
+            
+            const demoData = [
+                {
+                    type: 'Static',
+                    price: '$299',
+                    features: [
+                        'Responsive Landing Page',
+                        'Contact Form',
+                        'SEO Optimized',
+                        'Gallery/Portfolio',
+                        'Fast Loading'
+                    ],
+                    description: `A clean, professional ${websiteType.toLowerCase()} landing page with essential information and contact functionality.`
+                },
+                {
+                    type: 'Dynamic',
+                    price: '$799',
+                    features: [
+                        'Content Management',
+                        'Interactive Features',
+                        'Service Booking',
+                        'User Dashboard',
+                        'Admin Panel'
+                    ],
+                    description: `Interactive ${websiteType.toLowerCase()} with booking systems, user accounts, and dynamic content management.`
+                },
+                {
+                    type: 'Full-Fledged',
+                    price: '$1,499',
+                    features: [
+                        'Complete User System',
+                        'E-commerce Ready',
+                        'Advanced Dashboard',
+                        'Payment Integration',
+                        'Mobile App Ready'
+                    ],
+                    description: `Complete ${websiteType.toLowerCase()} solution with user authentication, payment systems, and full functionality.`
+                }
+            ];
+
+            demoCards.innerHTML = '';
+
+            demoData.forEach((demo, index) => {
+                const card = document.createElement('div');
+                card.className = 'demo-card';
+                
+                const featuresHtml = demo.features.map(feature => `<li>${feature}</li>`).join('');
+                
+                // Generate mini preview
+                const previewHtml = generateMiniPreview(websiteType, demo.type);
+                
+                card.innerHTML = `
+                    <div class="demo-preview">
+                        ${previewHtml}
+                    </div>
+                    <div class="demo-content">
+                        <div class="demo-title">${demo.type} ${websiteType}</div>
+                        <div class="demo-description">${demo.description}</div>
+                        <ul class="demo-features">
+                            ${featuresHtml}
+                        </ul>
+                        <div class="demo-price">${demo.price}</div>
+                        <button class="view-demo-btn" onclick="viewDemo('${demo.type}', '${websiteType}')">
+                            <i class="fas fa-eye"></i> View Live Demo
+                        </button>
+                        <button class="select-plan-btn" onclick="selectPlan('${demo.type}', '${websiteType}')">
+                            Select This Plan
+                        </button>
+                    </div>
+                `;
+                
+                demoCards.appendChild(card);
+            });
+        }
+
+        function generateMiniPreview(websiteType, demoType) {
+            const colors = getWebsiteColors(websiteType);
+            return `
+                <div class="preview-website">
+                    <div style="background: ${colors.primary}; height: 60px; display: flex; align-items: center; padding: 0 20px; color: white;">
+                        <div style="font-weight: bold;">${websiteType}</div>
+                        <div style="margin-left: auto;">☰</div>
+                    </div>
+                    <div style="padding: 20px; text-align: center; background: ${colors.secondary};">
+                        <div style="height: 40px; background: ${colors.accent}; margin: 10px 0; border-radius: 5px;"></div>
+                        <div style="height: 20px; background: #ddd; margin: 5px 0; border-radius: 3px;"></div>
+                        <div style="height: 20px; background: #ddd; margin: 5px 0; border-radius: 3px; width: 70%;"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function getWebsiteColors(websiteType) {
+            const colorSchemes = {
+                'construction': { primary: '#f39c12', secondary: '#ecf0f1', accent: '#e67e22' },
+                'restaurant': { primary: '#e74c3c', secondary: '#fdf2e9', accent: '#d35400' },
+                'ecommerce': { primary: '#3498db', secondary: '#ebf3fd', accent: '#2980b9' },
+                'law': { primary: '#2c3e50', secondary: '#ecf0f1', accent: '#34495e' },
+                'medical': { primary: '#1abc9c', secondary: '#e8f8f5', accent: '#16a085' },
+                'default': { primary: '#667eea', secondary: '#f8f9fa', accent: '#764ba2' }
+            };
+
+            const type = websiteType.toLowerCase();
+            for (let key in colorSchemes) {
+                if (type.includes(key)) {
+                    return colorSchemes[key];
+                }
+            }
+            return colorSchemes.default;
+        }
+
+        function viewDemo(planType, websiteType) {
+            document.getElementById('demoModalTitle').textContent = `${planType} ${websiteType} - Live Demo`;
+            document.getElementById('demoModal').style.display = 'block';
+            
+            // Generate the full demo website
+            const demoContent = generateFullDemo(websiteType, planType);
+            document.getElementById('demoWebsiteContainer').innerHTML = demoContent;
+            
+            // Disable body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function generateFullDemo(websiteType, planType) {
+            const colors = getWebsiteColors(websiteType);
+            const businessName = websiteType.includes('Website') ? websiteType.replace(' Website', '') : websiteType;
+            
+            if (planType === 'Static') {
+                return generateStaticDemo(businessName, colors);
+            } else if (planType === 'Dynamic') {
+                return generateDynamicDemo(businessName, colors);
+            } else {
+                return generateFullFledgedDemo(businessName, colors);
+            }
+        }
+
+        function generateStaticDemo(businessName, colors) {
+            return `
+                <div style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+                    <!-- Header -->
+                    <header style="background: ${colors.primary}; color: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <h1 style="margin: 0; font-size: 1.8rem;">${businessName} Pro</h1>
+                            <nav>
+                                <a href="#home" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
+                                <a href="#about" style="color: white; text-decoration: none; margin: 0 15px;">About</a>
+                                <a href="#services" style="color: white; text-decoration: none; margin: 0 15px;">Services</a>
+                                <a href="#contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact</a>
+                            </nav>
+                        </div>
+                    </header>
+
+                    <!-- Hero Section -->
+                    <section style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="${colors.secondary}" width="1000" height="600"/>
+                        <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="font-size: 3rem; margin-bottom: 1rem;">Professional ${businessName} Services</h2>
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Your trusted partner for quality ${businessName.toLowerCase()} solutions</p>
+                            <button style="background: ${colors.accent}; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">Get Started</button>
+                        </div>
+                    </section>
+
+                    <!-- Services Section -->
+                    <section style="padding: 80px 0; background: ${colors.secondary};">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Our Services</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                                    <div style="font-size: 3rem; color: ${colors.primary}; margin-bottom: 20px;">🏗️</div>
+                                    <h3 style="margin-bottom: 15px;">Service One</h3>
+                                    <p style="color: #666;">High-quality service with professional standards and reliable delivery.</p>
+                                </div>
+                                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                                    <div style="font-size: 3rem; color: ${colors.primary}; margin-bottom: 20px;">⚡</div>
+                                    <h3 style="margin-bottom: 15px;">Service Two</h3>
+                                    <p style="color: #666;">Fast and efficient solutions tailored to your specific needs.</p>
+                                </div>
+                                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                                    <div style="font-size: 3rem; color: ${colors.primary}; margin-bottom: 20px;">🎯</div>
+                                    <h3 style="margin-bottom: 15px;">Service Three</h3>
+                                    <p style="color: #666;">Precision and attention to detail in every project we undertake.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Section -->
+                    <section style="padding: 80px 0;">
+                        <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Contact Us</h2>
+                            <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                <form>
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Name</label>
+                                        <input type="text" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+                                        <input type="email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Message</label>
+                                        <textarea style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; height: 100px; resize: vertical;"></textarea>
+                                    </div>
+                                    <button type="submit" style="background: ${colors.primary}; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; width: 100%;">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer style="background: #333; color: white; padding: 40px 0; text-align: center;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <p>&copy; 2025 ${businessName} Pro. All rights reserved.</p>
+                            <p>📞 (555) 123-4567 | ✉️ info@${businessName.toLowerCase()}pro.com</p>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        function generateDynamicDemo(businessName, colors) {
+            return `
+                <div style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+                    <!-- Header with Login -->
+                    <header style="background: ${colors.primary}; color: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <h1 style="margin: 0; font-size: 1.8rem;">${businessName} Pro</h1>
+                            <nav style="display: flex; align-items: center; gap: 20px;">
+                                <a href="#home" style="color: white; text-decoration: none;">Home</a>
+                                <a href="#services" style="color: white; text-decoration: none;">Services</a>
+                                <a href="#booking" style="color: white; text-decoration: none;">Book Now</a>
+                                <a href="#dashboard" style="color: white; text-decoration: none;">Dashboard</a>
+                                <button style="background: ${colors.accent}; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+                            </nav>
+                        </div>
+                    </header>
+
+                    <!-- Hero with Interactive Elements -->
+                    <section style="background: linear-gradient(135deg, ${colors.primary}, ${colors.accent}); color: white; text-align: center; padding: 100px 0;">
+                        <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="font-size: 3rem; margin-bottom: 1rem;">Interactive ${businessName} Platform</h2>
+                            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Book services, track progress, and manage your account</p>
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button style="background: white; color: ${colors.primary}; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">Book Service</button>
+                                <button style="background: transparent; color: white; padding: 15px 30px; border: 2px solid white; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">View Portfolio</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Interactive Booking Section -->
+                    <section style="padding: 80px 0; background: ${colors.secondary};">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Book Your Service</h2>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                    <h3 style="margin-bottom: 20px;">Service Booking</h3>
+                                    <form>
+                                        <div style="margin-bottom: 15px;">
+                                            <label style="display: block; margin-bottom: 5px;">Service Type</label>
+                                            <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                                <option>Select Service</option>
+                                                <option>Premium Service</option>
+                                                <option>Standard Service</option>
+                                                <option>Basic Service</option>
+                                            </select>
+                                        </div>
+                                        <div style="margin-bottom: 15px;">
+                                            <label style="display: block; margin-bottom: 5px;">Preferred Date</label>
+                                            <input type="date" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                        </div>
+                                        <div style="margin-bottom: 15px;">
+                                            <label style="display: block; margin-bottom: 5px;">Time Slot</label>
+                                            <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                                <option>9:00 AM - 12:00 PM</option>
+                                                <option>1:00 PM - 4:00 PM</option>
+                                                <option>5:00 PM - 8:00 PM</option>
+                                            </select>
+                                        </div>
+                                        <button style="background: ${colors.primary}; color: white; padding: 12px 30px; border: none; border-radius: 5px; width: 100%; cursor: pointer;">Book Now</button>
+                                    </form>
+                                </div>
+                                <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                    <h3 style="margin-bottom: 20px;">Your Bookings</h3>
+                                    <div style="border: 1px solid #eee; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <strong>Premium Service</strong><br>
+                                                <small style="color: #666;">March 15, 2025 at 10:00 AM</small>
+                                            </div>
+                                            <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem;">Confirmed</span>
+                                        </div>
+                                    </div>
+                                    <div style="border: 1px solid #eee; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div>
+                                                <strong>Standard Service</strong><br>
+                                                <small style="color: #666;">March 22, 2025 at 2:00 PM</small>
+                                            </div>
+                                            <span style="background: #ffc107; color: #333; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem;">Pending</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Dashboard Preview -->
+                    <section style="padding: 80px 0;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">User Dashboard</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                                <div style="background: ${colors.primary}; color: white; padding: 30px; border-radius: 10px; text-align: center;">
+                                    <h3 style="font-size: 2rem; margin-bottom: 10px;">12</h3>
+                                    <p>Total Bookings</p>
+                                </div>
+                                <div style="background: ${colors.accent}; color: white; padding: 30px; border-radius: 10px; text-align: center;">
+                                    <h3 style="font-size: 2rem; margin-bottom: 10px;">3</h3>
+                                    <p>Active Projects</p>
+                                </div>
+                                <div style="background: #28a745; color: white; padding: 30px; border-radius: 10px; text-align: center;">
+                                    <h3 style="font-size: 2rem; margin-bottom: 10px;">9</h3>
+                                    <p>Completed</p>
+                                </div>
+                                <div style="background: #17a2b8; color: white; padding: 30px; border-radius: 10px; text-align: center;">
+                                    <h3 style="font-size: 2rem; margin-bottom: 10px;">4.8</h3>
+                                    <p>Rating</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer style="background: #333; color: white; padding: 40px 0; text-align: center;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <p>&copy; 2025 ${businessName} Pro - Dynamic Platform. All rights reserved.</p>
+                            <p>📞 (555) 123-4567 | ✉️ info@${businessName.toLowerCase()}pro.com | 🌐 www.${businessName.toLowerCase()}pro.com</p>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        function generateFullFledgedDemo(businessName, colors) {
+            return `
+                <div style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+                    <!-- Advanced Header with User Menu -->
+                    <header style="background: ${colors.primary}; color: white; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 30px;">
+                                <h1 style="margin: 0; font-size: 1.8rem;">${businessName} Enterprise</h1>
+                                <nav style="display: flex; gap: 20px;">
+                                    <a href="#dashboard" style="color: white; text-decoration: none;">Dashboard</a>
+                                    <a href="#services" style="color: white; text-decoration: none;">Services</a>
+                                    <a href="#marketplace" style="color: white; text-decoration: none;">Marketplace</a>
+                                    <a href="#analytics" style="color: white; text-decoration: none;">Analytics</a>
+                                </nav>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 20px;">
+                                    <span style="font-size: 0.9rem;">$2,450 Balance</span>
+                                </div>
+                                <div style="position: relative;">
+                                    <button style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">🔔</button>
+                                    <span style="position: absolute; top: -5px; right: -5px; background: #e74c3c; border-radius: 50%; width: 20px; height: 20px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center;">3</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 25px;">
+                                    <div style="width: 30px; height: 30px; background: ${colors.accent}; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">JD</div>
+                                    <span>John Doe</span>
+                                    <span style="cursor: pointer;">▼</span>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Hero with Advanced Features -->
+                    <section style="background: linear-gradient(135deg, ${colors.primary}, ${colors.accent}); color: white; padding: 80px 0;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                                <div>
+                                    <h2 style="font-size: 3rem; margin-bottom: 1rem; line-height: 1.2;">Complete ${businessName} Platform</h2>
+                                    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Full-featured platform with payments, user management, and advanced analytics</p>
+                                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                        <button style="background: white; color: ${colors.primary}; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">Start Free Trial</button>
+                                        <button style="background: transparent; color: white; padding: 15px 30px; border: 2px solid white; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">Watch Demo</button>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
+                                    <h3 style="margin-bottom: 20px;">Quick Stats</h3>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 2rem; font-weight: bold;">1,234</div>
+                                            <div style="font-size: 0.9rem; opacity: 0.8;">Active Users</div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 2rem; font-weight: bold;">$45K</div>
+                                            <div style="font-size: 0.9rem; opacity: 0.8;">Revenue</div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 2rem; font-weight: bold;">98%</div>
+                                            <div style="font-size: 0.9rem; opacity: 0.8;">Uptime</div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="font-size: 2rem; font-weight: bold;">4.9</div>
+                                            <div style="font-size: 0.9rem; opacity: 0.8;">Rating</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- E-commerce/Marketplace Section -->
+                    <section style="padding: 80px 0; background: ${colors.secondary};">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Marketplace</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s;">
+                                    <div style="height: 200px; background: linear-gradient(45deg, ${colors.primary}, ${colors.accent}); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">📦</div>
+                                    <div style="padding: 25px;">
+                                        <h3 style="margin-bottom: 10px;">Premium Package</h3>
+                                        <p style="color: #666; margin-bottom: 15px;">Complete solution with all features included</p>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                            <span style="font-size: 1.5rem; font-weight: bold; color: ${colors.primary};">$299</span>
+                                            <span style="color: #28a745;">✓ In Stock</span>
+                                        </div>
+                                        <button style="background: ${colors.primary}; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer;">Add to Cart</button>
+                                    </div>
+                                </div>
+                                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                    <div style="height: 200px; background: linear-gradient(45deg, ${colors.accent}, ${colors.primary}); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">⚡</div>
+                                    <div style="padding: 25px;">
+                                        <h3 style="margin-bottom: 10px;">Express Service</h3>
+                                        <p style="color: #666; margin-bottom: 15px;">Fast delivery and premium support</p>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                            <span style="font-size: 1.5rem; font-weight: bold; color: ${colors.primary};">$199</span>
+                                            <span style="color: #ffc107;">⏳ Limited</span>
+                                        </div>
+                                        <button style="background: ${colors.accent}; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer;">Add to Cart</button>
+                                    </div>
+                                </div>
+                                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                    <div style="height: 200px; background: linear-gradient(45deg, #28a745, #20c997); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🎯</div>
+                                    <div style="padding: 25px;">
+                                        <h3 style="margin-bottom: 10px;">Starter Plan</h3>
+                                        <p style="color: #666; margin-bottom: 15px;">Perfect for small businesses starting out</p>
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                            <span style="font-size: 1.5rem; font-weight: bold; color: ${colors.primary};">$99</span>
+                                            <span style="color: #28a745;">✓ Available</span>
+                                        </div>
+                                        <button style="background: #28a745; color: white; padding: 12px; border: none; border-radius: 5px; width: 100%; cursor: pointer;">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Dashboard -->
+                    <section style="padding: 80px 0;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Analytics Dashboard</h2>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                                    <h3 style="margin-bottom: 20px; color: #333;">Revenue Analytics</h3>
+                                    <div style="height: 200px; background: linear-gradient(to top, ${colors.primary}, ${colors.accent}); border-radius: 10px; display: flex; align-items: end; justify-content: space-around; padding: 20px;">
+                                        <div style="width: 30px; height: 60%; background: rgba(255,255,255,0.3); border-radius: 5px;"></div>
+                                        <div style="width: 30px; height: 80%; background: rgba(255,255,255,0.5); border-radius: 5px;"></div>
+                                        <div style="width: 30px; height: 100%; background: rgba(255,255,255,0.7); border-radius: 5px;"></div>
+                                        <div style="width: 30px; height: 70%; background: rgba(255,255,255,0.4); border-radius: 5px;"></div>
+                                        <div style="width: 30px; height: 90%; background: rgba(255,255,255,0.6); border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                                    <h3 style="margin-bottom: 20px; color: #333;">User Activity</h3>
+                                    <div style="margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Active Users</span>
+                                            <span style="font-weight: bold;">85%</span>
+                                        </div>
+                                        <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                            <div style="background: ${colors.primary}; height: 100%; width: 85%; border-radius: 4px;"></div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Engagement</span>
+                                            <span style="font-weight: bold;">72%</span>
+                                        </div>
+                                        <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                            <div style="background: ${colors.accent}; height: 100%; width: 72%; border-radius: 4px;"></div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 15px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                            <span>Conversion</span>
+                                            <span style="font-weight: bold;">43%</span>
+                                        </div>
+                                        <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                            <div style="background: #28a745; height: 100%; width: 43%; border-radius: 4px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User Management Panel -->
+                            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                                <h3 style="margin-bottom: 20px; color: #333;">User Management</h3>
+                                <div style="overflow-x: auto;">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <thead>
+                                            <tr style="background: ${colors.secondary};">
+                                                <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">User</th>
+                                                <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">Role</th>
+                                                <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">Status</th>
+                                                <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">Last Login</th>
+                                                <th style="padding: 15px; text-align: left; border-bottom: 1px solid #ddd;">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="width: 40px; height: 40px; background: ${colors.primary}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JD</div>
+                                                        <div>
+                                                            <div style="font-weight: bold;">John Doe</div>
+                                                            <div style="color: #666; font-size: 0.9rem;">john@example.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">Administrator</td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">Active</span>
+                                                </td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">2 hours ago</td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <button style="background: ${colors.primary}; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-right: 5px;">Edit</button>
+                                                    <button style="background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="width: 40px; height: 40px; background: ${colors.accent}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">JS</div>
+                                                        <div>
+                                                            <div style="font-weight: bold;">Jane Smith</div>
+                                                            <div style="color: #666; font-size: 0.9rem;">jane@example.com</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">Manager</td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8rem;">Active</span>
+                                                </td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">1 day ago</td>
+                                                <td style="padding: 15px; border-bottom: 1px solid #eee;">
+                                                    <button style="background: ${colors.primary}; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-right: 5px;">Edit</button>
+                                                    <button style="background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Payment Integration Demo -->
+                    <section style="padding: 80px 0; background: ${colors.secondary};">
+                        <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+                            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #333;">Payment Integration</h2>
+                            <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                <h3 style="margin-bottom: 20px;">Secure Payment Processing</h3>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                                    <div>
+                                        <h4 style="margin-bottom: 15px;">Payment Methods</h4>
+                                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                                            <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">
+                                                <input type="radio" name="payment" checked>
+                                                <span>💳 Credit/Debit Card</span>
+                                            </label>
+                                            <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">
+                                                <input type="radio" name="payment">
+                                                <span>🅿️ PayPal</span>
+                                            </label>
+                                            <label style="display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer;">
+                                                <input type="radio" name="payment">
+                                                <span>🏦 Bank Transfer</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 style="margin-bottom: 15px;">Order Summary</h4>
+                                        <div style="border: 1px solid #eee; border-radius: 5px; padding: 20px;">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <span>Premium Package</span>
+                                                <span>$299.00</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <span>Setup Fee</span>
+                                                <span>$50.00</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                <span>Tax</span>
+                                                <span>$34.90</span>
+                                            </div>
+                                            <hr style="margin: 15px 0;">
+                                            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem;">
+                                                <span>Total</span>
+                                                <span style="color: ${colors.primary};">$383.90</span>
+                                            </div>
+                                            <button style="background: ${colors.primary}; color: white; padding: 15px; border: none; border-radius: 5px; width: 100%; margin-top: 20px; cursor: pointer; font-size: 1.1rem;">Complete Payment</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer style="background: #333; color: white; padding: 60px 0 30px;">
+                        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                                <div>
+                                    <h3 style="margin-bottom: 20px; color: ${colors.primary};">${businessName} Enterprise</h3>
+                                    <p style="color: #ccc; margin-bottom: 20px;">Complete business solution with advanced features, payment processing, and enterprise-grade security.</p>
+                                    <div style="display: flex; gap: 15px;">
+                                        <div style="width: 40px; height: 40px; background: ${colors.primary}; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">f</div>
+                                        <div style="width: 40px; height: 40px; background: ${colors.accent}; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">t</div>
+                                        <div style="width: 40px; height: 40px; background: #0077b5; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">in</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 20px; color: ${colors.primary};">Enterprise Features</h4>
+                                    <ul style="list-style: none; color: #ccc;">
+                                        <li style="margin-bottom: 10px;">• Advanced Analytics</li>
+                                        <li style="margin-bottom: 10px;">• Payment Processing</li>
+                                        <li style="margin-bottom: 10px;">• User Management</li>
+                                        <li style="margin-bottom: 10px;">• API Integration</li>
+                                        <li style="margin-bottom: 10px;">• 24/7 Support</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 20px; color: ${colors.primary};">Contact Enterprise</h4>
+                                    <p style="color: #ccc; margin-bottom: 10px;">📞 Enterprise: (555) 123-4567</p>
+                                    <p style="color: #ccc; margin-bottom: 10px;">✉️ enterprise@${businessName.toLowerCase()}pro.com</p>
+                                    <p style="color: #ccc; margin-bottom: 10px;">🌐 www.${businessName.toLowerCase()}enterprise.com</p>
+                                    <p style="color: #ccc; margin-bottom: 10px;">📍 Enterprise Plaza, Suite 500</p>
+                                </div>
+                            </div>
+                            <div style="text-align: center; padding-top: 30px; border-top: 1px solid #555; color: #999;">
+                                <p>&copy; 2025 ${businessName} Enterprise Platform. All rights reserved. | Privacy Policy | Terms of Service | Security</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        function selectPlan(planType, websiteType) {
+            alert(`Excellent choice! You've selected the ${planType} plan for your ${websiteType}. Our enterprise team will contact you within 24 hours to discuss implementation details and provide a custom quote.`);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enter key support for demo generator
+        document.getElementById('websiteType').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateDemos();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('demoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDemoModal();
+            }
+        });
+    </script>
+</body>
+</html>
