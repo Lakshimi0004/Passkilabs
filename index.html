@@ -82,6 +82,40 @@
             margin-bottom: 2rem;
             opacity: 0.9;
         }
+        
+         .hero-tagline {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-button.primary {
+    background: #ff6b6b;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-button.secondary:hover {
+    background: white;
+    color: #667eea;
+}
 
         .cta-button {
             background: #ff6b6b;
@@ -357,6 +391,78 @@
             font-weight: bold;
             color: #667eea;
         }
+        
+          .service-card {
+    position: relative;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    border: 2px solid transparent;
+}
+
+.service-card.featured {
+    border-color: #ff6b6b;
+    transform: scale(1.05);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.service-features li {
+    padding: 8px 0;
+    color: #555;
+}
+
+.service-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.price-btn, .whatsapp-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.price-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+}
+
+.price-btn:hover, .whatsapp-btn:hover {
+    transform: translateY(-2px);
+}
+
 
         /* LMS Section */
         .lms-section {
@@ -382,6 +488,100 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
+        
+        .lms-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+}
+
+.highlight-item i {
+    color: #10b981;
+}
+
+.contact-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-top: 40px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.contact-item i {
+    color: #667eea;
+    width: 20px;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #667eea;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 8px 0;
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
 
         /* Footer */
         footer {
@@ -595,6 +795,34 @@
     }
 }
 
+@media (max-width: 768px) {
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card.featured {
+        transform: none;
+    }
+    
+    .lms-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -616,12 +844,17 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <h1>Professional Website Development Services</h1>
-            <p>Transform your vision into a stunning digital reality with our expert web development services</p>
-            <a href="#demo" class="cta-button">Try Demo Generator</a>
+    <div class="container">
+        <h1>Professional Website Development Services</h1>
+        <p class="hero-tagline">Transform your vision into a stunning digital reality with our expert web development services</p>
+        <p class="hero-subtitle">We create modern, responsive websites that drive results for your business</p>
+        <div class="hero-buttons">
+            <a href="#demo" class="cta-button primary">See Live Demo</a>
+            <a href="#contact" class="cta-button secondary">Get Free Quote</a>
         </div>
+    </div>
     </section>
+
 
     <!-- Demo Generator Section -->
     <section class="demo-generator" id="demo">
@@ -721,66 +954,114 @@
 </div>
 
     <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Our Development Plans</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-code"></i>
-                    </div>
-                    <h3 class="service-title">Static Website</h3>
-                    <p class="service-description">Perfect for simple business websites, portfolios, and landing pages. Fast loading and cost-effective.</p>
-                    <div class="service-price">Starting at $299</div>
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">Our Development Plans</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-code"></i>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="service-title">Dynamic Website</h3>
-                    <p class="service-description">Interactive websites with content management, user interactions, and database integration.</p>
-                    <div class="service-price">Starting at $799</div>
+                <h3 class="service-title">🌐 Static Website</h3>
+                <p class="service-description">Perfect for simple business websites, portfolios, and landing pages. Fast loading and cost-effective.</p>
+                <ul class="service-features">
+                    <li>✅ Responsive Design</li>
+                    <li>✅ SEO Optimized</li>
+                    <li>✅ Fast Loading Speed</li>
+                </ul>
+                <div class="service-actions">
+                    <button class="price-btn" onclick="requestPrice('Static Website')">📧 ASK FOR BEST PRICE</button>
+                    <button class="whatsapp-btn" onclick="contactWhatsApp('Static Website')">📱 WhatsApp Quote</button>
                 </div>
+            </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="service-title">Full-Fledged Website</h3>
-                    <p class="service-description">Complete web applications with advanced features, e-commerce, and custom functionality.</p>
-                    <div class="service-price">Starting at $1,499</div>
+            <div class="service-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="service-title">⚡ Dynamic Website</h3>
+                <p class="service-description">Interactive websites with content management, user interactions, and database integration.</p>
+                <ul class="service-features">
+                    <li>✅ Content Management</li>
+                    <li>✅ User Dashboard</li>
+                    <li>✅ Database Integration</li>
+                </ul>
+                <div class="service-actions">
+                    <button class="price-btn" onclick="requestPrice('Dynamic Website')">📧 ASK FOR BEST PRICE</button>
+                    <button class="whatsapp-btn" onclick="contactWhatsApp('Dynamic Website')">📱 WhatsApp Quote</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="service-title">🚀 Full-Stack Website</h3>
+                <p class="service-description">Complete web applications with advanced features, e-commerce, and custom functionality.</p>
+                <ul class="service-features">
+                    <li>✅ E-commerce Ready</li>
+                    <li>✅ Payment Integration</li>
+                    <li>✅ Advanced Analytics</li>
+                </ul>
+                <div class="service-actions">
+                    <button class="price-btn" onclick="requestPrice('Full-Stack Website')">📧 ASK FOR BEST PRICE</button>
+                    <button class="whatsapp-btn" onclick="contactWhatsApp('Full-Stack Website')">📱 WhatsApp Quote</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- LMS Section -->
+<!-- LMS Section -->
 <section class="lms-section" id="lms">
     <div class="container">
-        <h2 class="section-title">Personalized LMS Projects</h2>
+        <h2 class="section-title">🎓 Personalized LMS Projects</h2>
         <div class="lms-content">
             <div class="lms-text">
                 <h3>Custom Learning Management Systems</h3>
                 <p>Build powerful educational platforms tailored to your specific needs. Our LMS solutions provide comprehensive learning experiences for educational institutions, corporate training, and online course providers.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                
+                <!-- NEW: LMS Highlights -->
+                <div class="lms-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>📊 Track Student Progress</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span>💳 Easy Online Payments</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>📱 Mobile Learning App</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>🏆 Auto Certificate Generation</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px;">
                     <button onclick="viewLMSDemo()" class="cta-button" style="background: linear-gradient(135deg, #10b981, #059669);">
                         <i class="fas fa-play"></i> View LMS Demo
                     </button>
-                    <a href="#contact" class="cta-button">Get LMS Quote</a>
+                    <button class="price-btn" onclick="requestPrice('LMS System')">📧 Get LMS Quote</button>
                 </div>
             </div>
             <div class="lms-features">
-                <h4>LMS Features</h4>
+                <h4>🛠️ Complete LMS Features</h4>
                 <ul>
-                    <li>User Management & Roles</li>
-                    <li>Course Creation & Management</li>
-                    <li>Progress Tracking & Analytics</li>
-                    <li>Interactive Assessments</li>
-                    <li>Certificate Generation</li>
-                    <li>Payment Integration</li>
-                    <li>Mobile Responsive Design</li>
-                    <li>Multi-language Support</li>
+                    <li>👥 User Management & Roles</li>
+                    <li>📚 Course Creation & Management</li>
+                    <li>📈 Progress Tracking & Analytics</li>
+                    <li>🧠 Interactive Assessments</li>
+                    <li>🎖️ Certificate Generation</li>
+                    <li>💰 Payment Integration</li>
+                    <li>📱 Mobile Responsive Design</li>
+                    <li>🌍 Multi-language Support</li>
                 </ul>
             </div>
         </div>
@@ -789,51 +1070,90 @@
 
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3> PasskiLabs</h3>
-                    <p>Your trusted partner for professional website development and digital solutions.</p>
-                    <p><i class="fas fa-envelope"></i> info@PasskiLabs.com</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+    <!-- Contact Form Section -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title">📞 Get in Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>onlineparshu@gmail.com</span>
                 </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul>
-                        <li>Static Websites</li>
-                        <li>Dynamic Websites</li>
-                        <li>Full-Fledged Applications</li>
-                        <li>LMS Development</li>
-                        <li>E-commerce Solutions</li>
-                    </ul>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 78260 41647</span>
                 </div>
-                <div class="footer-section">
-                    <h3>Technologies</h3>
-                    <ul>
-                        <li>HTML5 & CSS3</li>
-                        <li>JavaScript & React</li>
-                        <li>Node.js & PHP</li>
-                        <li>MySQL & MongoDB</li>
-                        <li>WordPress & CMS</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li>24/7 Customer Support</li>
-                        <li>Free Maintenance</li>
-                        <li>Documentation</li>
-                        <li>Training Sessions</li>
-                        <li>Technical Consultation</li>
-                    </ul>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Available for projects worldwide</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 PasskiLabs. All rights reserved.</p>
+            <div class="contact-form-container">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Name *</label>
+                        <input type="text" id="contactName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" id="contactEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message *</label>
+                        <textarea id="contactMessage" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">📤 Send Message</button>
+                </form>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PasskiLabs</h3>
+                <p>Your trusted partner for professional website development and digital solutions.</p>
+                <p><i class="fas fa-envelope"></i> onlineparshu@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 78260 41647</p>
+            </div>
+            <div class="footer-section">
+                <h3>🔗 Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#demo">Demo Generator</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#lms">LMS</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>🛠️ Services</h3>
+                <ul>
+                    <li>Static Websites</li>
+                    <li>Dynamic Websites</li>
+                    <li>Full-Stack Applications</li>
+                    <li>LMS Development</li>
+                    <li>E-commerce Solutions</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>💬 Connect</h3>
+                <div class="social-links">
+                    <a href="mailto:onlineparshu@gmail.com" class="social-link">📧 Email</a>
+                    <a href="https://wa.me/917826041647" class="social-link">📱 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PasskiLabs. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
     <script>
         // Demo Generator JavaScript
@@ -1799,6 +2119,37 @@ document.getElementById('planForm').addEventListener('submit', function(e) {
         submitBtn.disabled = false;
     });
 });
+ 
+// Price request functions
+function requestPrice(serviceType) {
+    const subject = `Price Request for ${serviceType}`;
+    const body = `Hello PasskiLabs,%0D%0A%0D%0AI am interested in getting a quote for ${serviceType}.%0D%0A%0D%0APlease provide me with pricing details.%0D%0A%0D%0AThank you!`;
+    window.open(`mailto:onlineparshu@gmail.com?subject=${subject}&body=${body}`);
+}
+
+function contactWhatsApp(serviceType) {
+    const message = `Hello! I'm interested in getting a quote for ${serviceType}. Could you please provide me with pricing details?`;
+    window.open(`https://wa.me/917826041647?text=${encodeURIComponent(message)}`);
+}
+
+// Contact form handler
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+    
+    const subject = `Website Inquiry from ${name}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    
+    window.open(`mailto:onlineparshu@gmail.com?subject=${subject}&body=${body}`);
+    
+    // Reset form
+    this.reset();
+    alert('Thank you! Your message has been prepared. Please send the email that just opened.');
+});
+
 
     </script>
 </body>
