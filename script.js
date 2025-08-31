@@ -1,5 +1,15 @@
 let currentWebsiteType = '';
 
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("active");
+    });
+});
+
 function generateDemos() {
     const websiteType = document.getElementById('websiteType').value.trim();
     
@@ -582,76 +592,107 @@ function generateFullFledgedDemo(businessName) {
 function generateLMSDemo() {
     return `
         <div style="font-family: 'Inter', Arial, sans-serif; margin: 0; padding: 0; background: #f5f7fb;">
+
             <!-- LMS Header -->
-            <header style="background: linear-gradient(135deg, #4a90e2, #7b3fe4); color: white; padding: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); position: relative; top: 0; z-index: 1000;">
-                <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center;">
-                    <h1 style="margin: 0; font-size: 2rem; font-weight: 700; letter-spacing: -0.025em;">EduPlatform</h1>
-                    <nav style="display: flex; align-items: center; gap: 2rem;">
-                        <a href="#courses" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Courses</a>
-                        <a href="#dashboard" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Dashboard</a>
-                        <a href="#progress" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Progress</a>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.15); padding: 0.5rem 1rem; border-radius: 9999px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-                            <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg, #ffd166, #ff6b6b); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1rem; color: #1a1a1a;">JD</div>
-                            <span style="font-size: 1rem; font-weight: 500;">John Doe</span>
-                            <span style="cursor: pointer; font-size: 1.2rem;">▼</span>
+            <header class="lms-header">
+                <div class="lms-container">
+                    <h1 class="logo">EduPlatform</h1>
+                    <div class="hamburger" onclick="toggleLMSMenu()">☰</div>
+                    <nav class="lms-nav" id="lmsNav">
+                        <a href="#courses">Courses</a>
+                        <a href="#dashboard">Dashboard</a>
+                        <a href="#progress">Progress</a>
+                        <a href="#videos">Video Classes</a>
+                        <div class="profile" onclick="toggleProfileMenu(event)">
+                            <div class="avatar">JD</div>
+                            <span>NAME</span>
+                            <span class="arrow">▼</span>
+                            <div class="dropdown" id="profileDropdown">
+                                <a href="#settings">Settings</a>
+                                <a href="#logout">Logout</a>
+                            </div>
                         </div>
                     </nav>
                 </div>
             </header>
 
             <!-- LMS Hero -->
-            <section style="background: linear-gradient(135deg, #4a90e2 30%, #7b3fe4 100%); color: white; padding: 6rem 1.5rem; text-align: center;">
-                <div style="max-width: 900px; margin: 0 auto; padding: 0 24px; animation: fadeIn 1s ease-out;">
-                    <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">Embark on Your Learning Adventure</h2>
-                    <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9; line-height: 1.6;">Discover a world of knowledge with EduPlatform. Explore courses, track your progress, and earn certificates to showcase your skills.</p>
-                    <button style="background: #ffd166; color: #1a1a1a; padding: 1rem 2.5rem; border: none; border-radius: 9999px; font-size: 1.125rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)'" aria-label="Browse available courses">Browse Courses</button>
+            <section class="hero">
+                <div>
+                    <h2>Embark on Your Learning Adventure</h2>
+                    <p>Discover a world of knowledge with EduPlatform. Explore courses, track your progress, and earn certificates to showcase your skills.</p>
+                    <button class="btn primary">Browse Courses</button>
                 </div>
             </section>
 
             <!-- Course Catalog -->
-            <section style="padding: 6rem 1.5rem; background: linear-gradient(to bottom, #f5f7fb, #ffffff);">
-                <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-                    <h2 style="text-align: center; font-size: 2.75rem; font-weight: 700; margin-bottom: 4rem; color: #1a1a1a;">Explore Our Courses</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                        <div style="background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
-                            <div style="height: 200px; background: linear-gradient(45deg, #4a90e2, #63b3ed); display: flex; align-items: center; justify-content: center; font-size: 3rem;">📚</div>
-                            <div style="padding: 1.5rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem;">Web Development</h3>
-                                <p style="color: #4a5568; font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5;">Master HTML, CSS, and JavaScript to build modern, responsive websites.</p>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="color: #ff6b6b; font-weight: 600; font-size: 1.125rem;">$99</span>
-                                    <button style="background: linear-gradient(135deg, #4a90e2, #7b3fe4); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='linear-gradient(135deg, #7b3fe4, #4a90e2)'" onmouseout="this.style.background='linear-gradient(135deg, #4a90e2, #7b3fe4)'" aria-label="Enroll in Web Development course">Enroll Now</button>
-                                </div>
+            <section id="courses" class="catalog">
+                <h2>Explore Our Courses</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="thumb">📚</div>
+                        <div class="content">
+                            <h3>Web Development</h3>
+                            <p>Master HTML, CSS, and JavaScript to build modern, responsive websites.</p>
+                            <div class="card-footer">
+                                <span class="price">$99</span>
+                                <button class="btn success">Enroll Now</button>
                             </div>
                         </div>
-                        <div style="background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
-                            <div style="height: 200px; background: linear-gradient(45deg, #4a90e2, #63b3ed); display: flex; align-items: center; justify-content: center; font-size: 3rem;">💻</div>
-                            <div style="padding: 1.5rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem;">Data Science</h3>
-                                <p style="color: #4a5568; font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5;">Dive into Python, data analysis, and machine learning techniques.</p>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="color: #ff6b6b; font-weight: 600; font-size: 1.125rem;">$149</span>
-                                    <button style="background: linear-gradient(135deg, #4a90e2, #7b3fe4); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='linear-gradient(135deg, #7b3fe4, #4a90e2)'" onmouseout="this.style.background='linear-gradient(135deg, #4a90e2, #7b3fe4)'" aria-label="Enroll in Data Science course">Enroll Now</button>
-                                </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb">💻</div>
+                        <div class="content">
+                            <h3>Data Science</h3>
+                            <p>Dive into Python, data analysis, and machine learning techniques.</p>
+                            <div class="card-footer">
+                                <span class="price">$149</span>
+                                <button class="btn success">Enroll Now</button>
                             </div>
                         </div>
-                        <div style="background: white; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)'">
-                            <div style="height: 200px; background: linear-gradient(45deg, #4a90e2, #63b3ed); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🎨</div>
-                            <div style="padding: 1.5rem;">
-                                <h3 style="font-size: 1.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem;">UI/UX Design</h3>
-                                <p style="color: #4a5568; font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5;">Create user-friendly interfaces with Figma and modern design principles.</p>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="color: #ff6b6b; font-weight: 600; font-size: 1.125rem;">$129</span>
-                                    <button style="background: linear-gradient(135deg, #4a90e2, #7b3fe4); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='linear-gradient(135deg, #7b3fe4, #4a90e2)'" onmouseout="this.style.background='linear-gradient(135deg, #4a90e2, #7b3fe4)'" aria-label="Enroll in UI/UX Design course">Enroll Now</button>
-                                </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb">🎨</div>
+                        <div class="content">
+                            <h3>UI/UX Design</h3>
+                            <p>Create user-friendly interfaces with Figma and modern design principles.</p>
+                            <div class="card-footer">
+                                <span class="price">$129</span>
+                                <button class="btn success">Enroll Now</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Video Classes + Quizzes -->
+            <section id="videos" class="video-section">
+                <h2>🎥 Interactive Video Classes + Quizzes</h2>
+                <p>Learn with engaging video content and reinforce your knowledge with quizzes after each class.</p>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumb">▶</div>
+                        <h3>Intro to Web Dev</h3>
+                        <p>Watch the basics and test your knowledge with a quick quiz.</p>
+                        <button class="btn play">Play & Quiz</button>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">▶</div>
+                        <h3>Data Science Bootcamp</h3>
+                        <p>Interactive lessons with practice quizzes after each module.</p>
+                        <button class="btn play">Play & Quiz</button>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">▶</div>
+                        <h3>UI/UX Workshop</h3>
+                        <p>Practical design examples + quiz-based assessments.</p>
+                        <button class="btn play">Play & Quiz</button>
+                    </div>
+                </div>
+            </section>
+
             <!-- Progress Tracking -->
-            <section style="padding: 6rem 1.5rem; background: #ffffff;">
+             <section style="padding: 6rem 1.5rem; background: #ffffff;">
                 <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
                     <h2 style="text-align: center; font-size: 2.75rem; font-weight: 700; margin-bottom: 4rem; color: #1a1a1a;">Track Your Learning Progress</h2>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
@@ -690,68 +731,122 @@ function generateLMSDemo() {
                 </div>
             </section>
 
+
             <!-- Footer -->
-            <footer style="background: linear-gradient(135deg, #1a1a1a, #4a5568); color: white; padding: 4rem 1.5rem; text-align: center;">
-                <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
-                    <p style="font-size: 1rem; margin-bottom: 1rem;">&copy; 2025 EduPlatform. All rights reserved.</p>
-                    <p style="font-size: 0.875rem; margin-bottom: 1.5rem; opacity: 0.8;">📞 (555) 123-4567 | ✉️ support@eduplatform.com</p>
-                    <div style="display: flex; justify-content: center; gap: 2rem;">
-                        <a href="#privacy" style="color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Privacy Policy</a>
-                        <a href="#terms" style="color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Terms of Service</a>
-                        <a href="#support" style="color: white; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ffd166'" onmouseout="this.style.color='white'">Support</a>
-                    </div>
+            <footer class="footer">
+                <p>&copy; 2025 EduPlatform. All rights reserved.</p>
+                <p>📞 (555) 123-4567 | ✉️ support@eduplatform.com</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#support">Support</a>
                 </div>
             </footer>
 
-            <!-- Inline CSS for Animations -->
+            <!-- Styles -->
             <style>
-                @keyframes fadeIn {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
+                /* 🎨 General Buttons */
+                .btn {
+                    border: none;
+                    padding: 0.8rem 1.6rem;
+                    border-radius: 999px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
                 }
+                .btn.primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+                .btn.success { background: linear-gradient(135deg, #06beb6, #48b1bf); color: white; }
+                .btn.warning { background: linear-gradient(135deg, #f7971e, #ffd200); color: #1a1a1a; }
+                .btn.play { background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; }
+                .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 15px rgba(0,0,0,0.25); }
+
+                /* Header */
+                .lms-header {
+                    background: linear-gradient(135deg, #4a90e2, #7b3fe4);
+                    color: white;
+                    padding: 1rem 0;
+                    position: relative;
+                    top: 0; width: 100%;
+                    z-index: 1000;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                }
+                .lms-container {
+                    max-width: 1280px;
+                    margin: 0 auto;
+                    padding: 0 24px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .logo { font-size: 1.8rem; font-weight: 700; }
+                .hamburger { display: none; font-size: 2rem; cursor: pointer; }
+                .lms-nav { display: flex; align-items: center; gap: 2rem; }
+                .lms-nav a { color: white; text-decoration: none; font-weight: 500; position: relative; }
+                .lms-nav a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: #ffd166; transition: 0.3s; }
+                .lms-nav a:hover::after { width: 100%; }
+                .profile { display: flex; align-items: center; gap: .5rem; position: relative; cursor: pointer; }
+                .avatar { width: 2.2rem; height: 2.2rem; background: #ffd166; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #1a1a1a; }
+                .dropdown { display: none; position: absolute; top: 120%; right: 0; background: white; color: #1a1a1a; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+                .dropdown a { display: block; padding: 0.75rem 1.25rem; color: #1a1a1a; text-decoration: none; }
+                .dropdown a:hover { background: #f5f5f5; }
+                .dropdown.show { display: block; }
+
+                /* Hero */
+                .hero { margin-top: 1px; padding: 6rem 1.5rem; text-align: center; background: linear-gradient(135deg, #4a90e2, #7b3fe4); color: white; }
+                .hero h2 { font-size: 3rem; font-weight: 800; animation: fadeInDown 1s ease; }
+                .hero p { font-size: 1.2rem; margin: 1rem 0 2rem; animation: fadeInUp 1.2s ease; }
+
+                /* Cards / Catalog / Progress */
+                .catalog, .progress, .video-section { padding: 5rem 1.5rem; background: white; }
+                .catalog h2, .progress h2, .video-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2.5rem; }
+                .grid, .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+                .card, .progress-card, .video-card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; padding: 1.5rem; transition: transform .2s; text-align: center; }
+                .card:hover, .video-card:hover { transform: translateY(-6px); }
+                .video-thumb { height: 150px; font-size: 3rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e2e4f9ff, #8089d1ff); border-radius: 12px; margin-bottom: 1rem; }
+                .thumb{ height: 150px; font-size: 3rem; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #7782e4ff, #c0cadcff); border-radius: 12px; margin-bottom: 1rem; }
+                .card-footer { display: flex; justify-content: space-between; align-items: center; }
+                .price { color: #ff6b6b; font-weight: bold; }
+
+                /* Footer */
+                .footer { background: linear-gradient(135deg, #1a1a1a, #4a5568); color: white; text-align: center; padding: 3rem 1rem; }
+                .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+                .footer-links a { color: white; text-decoration: none; }
+
+                /* Animations */
+                @keyframes fadeInDown { from {opacity:0; transform: translateY(-20px);} to {opacity:1; transform: translateY(0);} }
+                @keyframes fadeInUp { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+
+                /* Mobile */
                 @media (max-width: 768px) {
-                    header {
-                        padding: 1rem;
-                    }
-                    header h1 {
-                        font-size: 1.5rem;
-                    }
-                    header nav {
-                        gap: 1rem;
-                    }
-                    header nav a {
-                        font-size: 0.9rem;
-                    }
-                    header nav div {
-                        padding: 0.5rem;
-                    }
-                    section h2 {
-                        font-size: 2rem;
-                    }
-                    section button {
-                        padding: 0.75rem 1.5rem;
-                        font-size: 0.9rem;
-                    }
-                    .grid {
-                        grid-template-columns: 1fr;
-                    }
-                }
-                @media (max-width: 480px) {
-                    header h1 {
-                        font-size: 1.25rem;
-                    }
-                    header nav {
-                        flex-direction: column;
-                        gap: 0.5rem;
-                    }
-                    section {
-                        padding: 3rem 1rem;
-                    }
-                    section h2 {
-                        font-size: 1.75rem;
-                    }
+                    .hamburger { display: block; }
+                    .lms-nav { display: none; flex-direction: column; background: #4a90e2; position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem 0; }
+                    .lms-nav.show { display: flex; }
                 }
             </style>
+
+            <!-- Scripts -->
+            <script>
+                function toggleLMSMenu() {
+                    document.getElementById('lmsNav').classList.toggle('show');
+                }
+                function toggleProfileMenu(e) {
+                    e.stopPropagation();
+                    document.getElementById('profileDropdown').classList.toggle('show');
+                }
+                document.addEventListener('click', () => {
+                    document.getElementById('profileDropdown').classList.remove('show');
+                });
+
+                // Smooth scroll
+                document.querySelectorAll('.lms-nav a').forEach(a => {
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                        document.getElementById('lmsNav').classList.remove('show');
+                    });
+                });
+
+            </script>
         </div>
     `;
 }
