@@ -20,20 +20,28 @@
 
 <body>
     <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fas fa-code"></i> PasskiLabs
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#demo">Demo Generator</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#lms">LMS</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header class="header">
+    <nav class="container">
+        <div class="logo">
+            <i class="fas fa-code"></i> PasskiLabs
+        </div>
+        
+        <!-- Hamburger button for mobile -->
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#demo">Demo Generator</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#lms">LMS</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
 
     <!-- Hero Section -->
     <section class="hero" id="home">
