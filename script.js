@@ -437,7 +437,7 @@ function generateFullFledgedDemo(businessName) {
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 25px;">
                             <div style="width: 30px; height: 30px; background: #1A3C34; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">JD</div>
-                            <span>John Doe</span>
+                            <span>NAME</span>
                             <span style="cursor: pointer;">▼</span>
                         </div>
                     </div>
@@ -530,7 +530,7 @@ function generateFullFledgedDemo(businessName) {
                             <form>
                                 <div style="margin-bottom: 15px;">
                                     <label style="display: block; margin-bottom: 5px; color: #38A169;">Cardholder Name</label>
-                                    <input type="text" placeholder="John Doe" style="width: 100%; padding: 8px; border: 1px solid #E2E8F0; border-radius: 6px;"/>
+                                    <input type="text" placeholder="NAME" style="width: 100%; padding: 8px; border: 1px solid #E2E8F0; border-radius: 6px;"/>
                                 </div>
                                 <div style="margin-bottom: 15px;">
                                     <label style="display: block; margin-bottom: 5px; color: #38A169;">Card Number</label>
@@ -1003,5 +1003,6 @@ function generateDemos() {
         document.getElementById('demoResults').scrollIntoView({ behavior: 'smooth' });
     }, 2000); // 2 seconds loading simulation; adjust as needed
 }
+
 
 
